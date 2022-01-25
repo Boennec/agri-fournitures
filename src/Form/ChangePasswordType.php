@@ -18,7 +18,7 @@ class ChangePasswordType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'disabled' => true,
+                'disabled' => true, //le user ne peut pas modifier ce champ
                 'label'    => 'Mon adresse email'
             ])
             ->add('Prenom', TextType::class, [
@@ -31,14 +31,14 @@ class ChangePasswordType extends AbstractType
             ])
             ->add('old_password', PasswordType::class, [
                 'label'    => 'Mon mot de passe actuel',
-                'mapped'   => false,
+                'mapped'   => false,//cette propriété ne se trouve pas dans l'entity User, donc mapper a false
                 'attr'     => [
                     'placeholder'  =>  "Veuillez saisir votre mot de passe actuel"
                 ]
             ])
             ->add('new_password', RepeatedType::class, [
                 'type'            => PasswordType::class,
-                'mapped'          => false,
+                'mapped'          => false,//cette propriété ne se trouve pas dans l'entity User
                 'invalid_message' => 'Le mot de passe et la confirmation doivent être identiques',
                 'label'           => 'Mon nouveau mot de passe',
                 'required'        => 'true',

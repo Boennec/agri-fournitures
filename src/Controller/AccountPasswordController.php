@@ -16,10 +16,10 @@ class AccountPasswordController extends AbstractController
 {
     private $entityManager;
 
-public function __construct(EntityManagerInterface $entityManager){
-$this->entityManager = $entityManager;
-
-}
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
     /**
      * @Route("/compte/modifier-mot-de-passe", name="account_password")
      */
@@ -33,17 +33,17 @@ $this->entityManager = $entityManager;
         $user = $this->getUser();
 
         //il faut appeler le formulaire qui est dans changePasswordType, 
-        //le lier a l'user,  et le passer a la vue
+        //le lier a l'user dont on a été chercher la valeur avec getUser(), et le passer a la vue
         $form = $this->createForm(ChangePasswordType::class, $user);
 
-        //handleRequest sert a écouter la requete entrante
+        //handleRequest va écouter la requete entrante
         $form->handleRequest($request);
 
         //si le form a été soumis et validé
         if ($form->isSubmitted() && $form->isValid()) {
 
             //on veut donc modifier le password;
-            //il faut pouvoir comparer le password actuellement saisi par le user avec le password encrypté dans la bdd
+            //il faut d'abord pouvoir comparer le password actuellement saisi par le user avec le password encrypté dans la bdd
             $old_pwd = $form->get('old_password')->getData();
             if ($encoder->isPasswordValid($user, $old_pwd)) {
 
@@ -56,7 +56,7 @@ $this->entityManager = $entityManager;
                 //on set le new password dans la propriété password de l'entity User
                 $user->setPassword($password);
 
-
+                //on enregistre dans la bdd
                 //$this->entityManager->persist($user);
                 //pas besoin de persister car c'est une mise a jour et non une création de password
 
