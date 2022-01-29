@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nos produits Agri-fournitures{% endblock %}
+{% block title %}Nos produits Agri-fournitures
+{% endblock %}
 
 {% block content %}
 	<h1>Nos produits</h1>
@@ -11,14 +12,14 @@
 
 			<div class="col-md-4">
 				<div class="produit-item text-center">
-					<img src="/uploads/{{ produit.illustration }}" alt="{{ produit.nom }}" class="img-fluid">
 					<h5>{{ produit.nom }}</h5>
-					<span class="produit-soustitre">{{ produit.soustitre }}</span>
-					<span class="produit-prix">{{ (produit.prix / 100) | number_format(2, ',', '.') }} €</span>
+					<a href="{{ path('produit', { 'slug' : produit.slug }) }}"><img src="/uploads/{{ produit.illustration }}" alt="{{ produit.nom }}" class="img-fluid">
+						<span class="produit-soustitre">{{ produit.soustitre }}</span>
+						<span class="produit-prix">{{ (produit.prix / 100) | number_format(2, ',', '.') }}€</span>
+					</div>
 				</div>
-			</div>
-		{% endfor %}
+			{% endfor %}
 
-	</div>
+		</div>
 
-{% endblock %}
+	{% endblock %}
