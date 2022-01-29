@@ -11,3 +11,35 @@
     padding-top: 25px;
 
 }
+
+.produit-item h5 {
+
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-bottom: 1px;
+
+}
+
+.produit-item {
+margin-top: 50px;
+
+}
+
+.produit-item .produit-soustitre {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+} 
+
+.produit-item .produit-prix {
+
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+.produit-container {
+
+    margin-bottom: 150px;
+
+}
